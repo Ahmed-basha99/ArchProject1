@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sim_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="sim" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="110290000fs"></ZoomStartTime>
+      <ZoomEndTime time="179290001fs"></ZoomEndTime>
+      <Cursor1Time time="164490000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="133"></NameColumnWidth>
+      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="52" />
+   <wvobject fp_name="/sim/proc/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/ledSel" type="array">
+      <obj_property name="ElementShortName">ledSel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ledSel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/ssdSel" type="array">
+      <obj_property name="ElementShortName">ssdSel[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ssdSel[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/next_pc" type="array">
+      <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/curr_pc" type="array">
+      <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/pcadd4" type="array">
+      <obj_property name="ElementShortName">pcadd4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcadd4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/add4" type="array">
+      <obj_property name="ElementShortName">add4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">add4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/inst" type="array">
+      <obj_property name="ElementShortName">inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/branch" type="array">
+      <obj_property name="ElementShortName">branch[2:0]</obj_property>
+      <obj_property name="ObjectShortName">branch[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/writeBackVal" type="array">
+      <obj_property name="ElementShortName">writeBackVal[1:0]</obj_property>
+      <obj_property name="ObjectShortName">writeBackVal[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/pcSel" type="logic">
+      <obj_property name="ElementShortName">pcSel</obj_property>
+      <obj_property name="ObjectShortName">pcSel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/memWrite" type="logic">
+      <obj_property name="ElementShortName">memWrite</obj_property>
+      <obj_property name="ObjectShortName">memWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/alusrc2sel" type="logic">
+      <obj_property name="ElementShortName">alusrc2sel</obj_property>
+      <obj_property name="ObjectShortName">alusrc2sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/regWrite" type="logic">
+      <obj_property name="ElementShortName">regWrite</obj_property>
+      <obj_property name="ObjectShortName">regWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/memRead" type="logic">
+      <obj_property name="ElementShortName">memRead</obj_property>
+      <obj_property name="ObjectShortName">memRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/push" type="logic">
+      <obj_property name="ElementShortName">push</obj_property>
+      <obj_property name="ObjectShortName">push</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/jStart" type="logic">
+      <obj_property name="ElementShortName">jStart</obj_property>
+      <obj_property name="ObjectShortName">jStart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/jump" type="logic">
+      <obj_property name="ElementShortName">jump</obj_property>
+      <obj_property name="ObjectShortName">jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/ALUOp" type="array">
+      <obj_property name="ElementShortName">ALUOp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUOp[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/storeSize" type="array">
+      <obj_property name="ElementShortName">storeSize[1:0]</obj_property>
+      <obj_property name="ObjectShortName">storeSize[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/readSize" type="array">
+      <obj_property name="ElementShortName">readSize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">readSize[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/IMM" type="array">
+      <obj_property name="ElementShortName">IMM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IMM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/WB_data" type="array">
+      <obj_property name="ElementShortName">WB_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WB_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/R1" type="array">
+      <obj_property name="ElementShortName">R1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">R1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/R2" type="array">
+      <obj_property name="ElementShortName">R2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">R2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/alusrc2val" type="array">
+      <obj_property name="ElementShortName">alusrc2val[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alusrc2val[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/AluOut" type="array">
+      <obj_property name="ElementShortName">AluOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AluOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/cf" type="logic">
+      <obj_property name="ElementShortName">cf</obj_property>
+      <obj_property name="ObjectShortName">cf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/zf" type="logic">
+      <obj_property name="ElementShortName">zf</obj_property>
+      <obj_property name="ObjectShortName">zf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/vf" type="logic">
+      <obj_property name="ElementShortName">vf</obj_property>
+      <obj_property name="ObjectShortName">vf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/sf" type="logic">
+      <obj_property name="ElementShortName">sf</obj_property>
+      <obj_property name="ObjectShortName">sf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/branchSignal" type="logic">
+      <obj_property name="ElementShortName">branchSignal</obj_property>
+      <obj_property name="ObjectShortName">branchSignal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DMoutput" type="array">
+      <obj_property name="ElementShortName">DMoutput[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DMoutput[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/immPC" type="array">
+      <obj_property name="ElementShortName">immPC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">immPC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/pcimm" type="array">
+      <obj_property name="ElementShortName">pcimm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcimm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/pcval" type="array">
+      <obj_property name="ElementShortName">pcval[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcval[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/last" type="array">
+      <obj_property name="ElementShortName">last[31:0]</obj_property>
+      <obj_property name="ObjectShortName">last[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/MemRead" type="logic">
+      <obj_property name="ElementShortName">MemRead</obj_property>
+      <obj_property name="ObjectShortName">MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/MemWrite" type="logic">
+      <obj_property name="ElementShortName">MemWrite</obj_property>
+      <obj_property name="ObjectShortName">MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/addr" type="array">
+      <obj_property name="ElementShortName">addr[5:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/push" type="logic">
+      <obj_property name="ElementShortName">push</obj_property>
+      <obj_property name="ObjectShortName">push</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/RegFile/Q" type="array">
+      <obj_property name="ElementShortName">Q[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[31:0][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/MemRead" type="logic">
+      <obj_property name="ElementShortName">MemRead</obj_property>
+      <obj_property name="ObjectShortName">MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/MemWrite" type="logic">
+      <obj_property name="ElementShortName">MemWrite</obj_property>
+      <obj_property name="ObjectShortName">MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/addr" type="array">
+      <obj_property name="ElementShortName">addr[5:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/DM/mem" type="array">
+      <obj_property name="ElementShortName">mem[0:63][31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem[0:63][31:0]</obj_property>
+   </wvobject>
+</wave_config>
