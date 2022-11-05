@@ -32,7 +32,7 @@ Processor proc(clk, rst, ledSel, ssdSel, push, led, AN, seg);
 always #10 push = ~push;
 initial begin
 rst = 1;
-push = 1;
+push = 0;
 
 ledSel = 0;
 ssdSel = 0;

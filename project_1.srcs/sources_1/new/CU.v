@@ -30,7 +30,8 @@ module cu(
     output reg memRead, 
     output reg[1:0] writeBackVal,
     output reg memWrite,
-    output reg alusrc1, //choose pc or rs1
+    output reg alusrc1,//choose pc or rs1
+    output reg alusrc2, // choose immgen or rs2
     output reg regWrite,
     output reg [3:0] ALUOp,
     output reg [2:0] readSize,
@@ -73,6 +74,7 @@ mux for pcSel mux output and signal from ecall and fence to jump to address 0
 always @ * begin
     jump = 0;
     jal_jalr= 0;
+    alusrc1 = 0;
     case(opcode)
         `OPCODE_Branch: begin
             readSize = 3'b111;  // Load_pass macro
@@ -80,7 +82,7 @@ always @ * begin
             memRead = 0;
             writeBackVal = 0;
             memWrite = 0;
-            alusrc1 = 0;
+            alusrc2 = 0;
             regWrite = 0;
             branch = funct3;
             ALUOp = `ALU_SUB;
@@ -92,7 +94,7 @@ always @ * begin
             memRead = 1;
             writeBackVal = 1;
             memWrite = 0;
-            alusrc1 = 1;
+            alusrc2 = 1;
             regWrite = 1;
             branch = `BR_PASS;
             ALUOp = `ALU_ADD;
@@ -105,7 +107,7 @@ always @ * begin
             memRead = 0;  // no load
             writeBackVal = 0; // alu result at 0
             memWrite = 1;  // no write
-            alusrc1 = 1;   //immgen source
+            alusrc2 = 1;   //immgen source
             regWrite = 1;  //store in rd
             ALUOp = `ALU_ADD; // No alu op
             branch = `BR_PASS; //no branch
@@ -121,7 +123,7 @@ always @ * begin
             memRead = 0;  // no load
             writeBackVal = 2; // pc+4 to rd
             memWrite = 0;  // no write
-            alusrc1 = 1;   //immgen source
+            alusrc2 = 1;   //immgen source
             regWrite = 1;  //store in rd
             ALUOp = `ALU_ADD; // add pc + imm
             branch = `BR_PASS; //no branch
@@ -136,7 +138,7 @@ always @ * begin
             memRead = 0;  // no load
             writeBackVal = 2; // pc+4 to rd
             memWrite = 0;  // no write
-            alusrc1 = 1;   //immgen source
+            alusrc2 = 1;   //immgen source
             regWrite = 1;  //store in rd
             ALUOp = `ALU_ADD; // add pc + imm
             branch = `BR_PASS; //no branch
@@ -149,7 +151,7 @@ always @ * begin
             memRead = 0;
             writeBackVal = 0;
             memWrite = 0;
-            alusrc1 = 1; //immgen
+            alusrc2 = 1; //immgen
             regWrite = 1;
             case(funct3) 
                 `F3_ADD: ALUOp = `ALU_ADD;
@@ -181,7 +183,7 @@ always @ * begin
             memRead = 0;  // no load
             writeBackVal = 0; // alu result at 0
             memWrite = 0;  // no write
-            alusrc1 = 0;   // rs2
+            alusrc2 = 0;   // rs2
             regWrite = 1;  //store in rd
             case(funct3)
                 `F3_ADD: begin
@@ -215,10 +217,12 @@ always @ * begin
         `OPCODE_AUIPC: begin   // auipc, rd = PC+(imm <<12)
             pcSel = 0; 
             memRead = 0;  
-            jal_jalr = 1;
+            jal_jalr = 0;
             writeBackVal = 0; 
             memWrite = 0;  
-            alusrc1 = 1;  
+            alusrc2 = 1;
+            
+            alusrc1 = 1;
             regWrite = 1;  
             ALUOp = `ALU_ADD; 
             branch = `BR_PASS; 
@@ -232,7 +236,7 @@ always @ * begin
             memRead = 0; 
             writeBackVal = 0; 
             memWrite = 0;  
-            alusrc1 = 1;  
+            alusrc2 = 1;  
             regWrite = 1;  
             ALUOp = `ALU_PASS; 
             branch = `BR_PASS; 
@@ -246,7 +250,7 @@ always @ * begin
             memRead = 0;  
             writeBackVal = 0; 
             memWrite = 0;  
-            alusrc1 = 0;   
+            alusrc2 = 0;   
             regWrite = 0;  
             ALUOp = `ALU_PASS; 
             branch = `BR_PASS; 
@@ -264,7 +268,7 @@ always @ * begin
                     memRead = 0;  
                     writeBackVal = 0; 
                     memWrite = 0;  
-                    alusrc1 = 0;   
+                    alusrc2 = 0;   
                     regWrite = 0;  
                     ALUOp = `ALU_PASS; 
                    branch = `BR_PASS; 
@@ -278,7 +282,7 @@ always @ * begin
                     memRead = 0;  
                     writeBackVal = 0; 
                     memWrite = 0;  
-                    alusrc1 = 0;   
+                    alusrc2 = 0;   
                     regWrite = 0;  
                     ALUOp = `ALU_PASS; 
                     branch = `BR_PASS; 
@@ -295,7 +299,7 @@ always @ * begin
             memRead = 0;
             writeBackVal = 0;
             memWrite = 0;
-            alusrc1 = 0;
+            alusrc2 = 0;
             regWrite = 0;
             ALUOp = `ALU_PASS;
             branch = `BR_PASS;
@@ -308,7 +312,7 @@ always @ * begin
             memRead = 0;
             writeBackVal = 0;
             memWrite = 0;
-            alusrc1 = 0;
+            alusrc2 = 0;
             regWrite = 0;
             ALUOp = `ALU_PASS;
             branch = `BR_PASS;

@@ -23,7 +23,7 @@
 module RF(input clk, rst, [4:0]R1, [4:0]R2,[4:0]W, [31:0] data,input  regwrite , output [31:0]o1 ,[31:0]o2  );
 wire [31:0] Q[31:0];
 reg [31:0] load;
-initial load = 4294967295;
+initial load = 0;
 genvar i ;
 generate begin  
 for (i=0 ; i<32 ; i= i+1)  
