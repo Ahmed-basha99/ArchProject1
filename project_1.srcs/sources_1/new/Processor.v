@@ -81,7 +81,7 @@ BranchUnit Branchunit (branch, zf,cf,vf,sf, branchSignal);
 // dataMem
 wire [31:0] DMoutput;
 // issue with 4th parameter
-datamem DM(push, memRead , memWrite ,  {2'b00, AluOut[31:2]}, R2, DMoutput, readSize, storeSize) ;
+datamem DM(push, memRead , memWrite ,  AluOut[7:0], R2, DMoutput, readSize, storeSize) ;
 
 // Write Back 
 x41Mux WBmux (AluOut, DMoutput, pcadd4, 0, writeBackVal, WB_data);
