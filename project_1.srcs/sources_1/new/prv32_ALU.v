@@ -12,7 +12,6 @@ module prv32_ALU(
     
      wire[31:0] add,  sub, op_b;
      wire cfa, cfs;
-    
     assign op_b = (~b);
     
     assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b);

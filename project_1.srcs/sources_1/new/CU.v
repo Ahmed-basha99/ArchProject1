@@ -25,6 +25,7 @@ module cu(
     input wire [4:0] opcode,
     input wire [2:0] funct3,
     input wire [6:0] funct7,
+    input wire rs2lb,
     output reg[2:0] branch,
     output reg pcSel,
     output reg memRead, 
@@ -38,7 +39,8 @@ module cu(
     output reg [1:0] storeSize,
     output reg jStart,
     output reg jump,
-    output reg jal_jalr
+    output reg jal_jalr,
+    output reg RI
 );
 /*
 
@@ -75,6 +77,7 @@ always @ * begin
     jump = 0;
     jal_jalr= 0;
     alusrc1 = 0;
+    RI = 0;
     case(opcode)
         `OPCODE_Branch: begin
             readSize = 3'b111;  // Load_pass macro
@@ -108,7 +111,7 @@ always @ * begin
             writeBackVal = 0; // alu result at 0
             memWrite = 1;  // no write
             alusrc2 = 1;   //immgen source
-            regWrite = 1;  //store in rd
+            regWrite = 0;  //store in rd
             ALUOp = `ALU_ADD; // No alu op
             branch = `BR_PASS; //no branch
             readSize = 3'b111;  /// load pass
@@ -147,6 +150,7 @@ always @ * begin
             jStart = 0;
         end
         `OPCODE_Arith_I: begin
+            RI = 1;
             pcSel = 0;
             memRead = 0;
             writeBackVal = 0;
@@ -179,6 +183,7 @@ always @ * begin
             jStart = 0;
         end  
         `OPCODE_Arith_R: begin
+            RI =0;
             pcSel = 0; // no jump
             memRead = 0;  // no load
             writeBackVal = 0; // alu result at 0
@@ -215,6 +220,7 @@ always @ * begin
         end
 
         `OPCODE_AUIPC: begin   // auipc, rd = PC+(imm <<12)
+            
             pcSel = 0; 
             memRead = 0;  
             jal_jalr = 0;
@@ -262,7 +268,7 @@ always @ * begin
         end
         
         `OPCODE_SYSTEM: begin    //ecall and fence 
-            case(funct7[5])
+            case(rs2lb)
                 0: begin   //ecall
                     pcSel = 0; 
                     memRead = 0;  

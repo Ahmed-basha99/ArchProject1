@@ -46,7 +46,9 @@ wire memWrite, alusrc1sel, alusrc2sel,regWrite,memRead,jStart, jump, jal_jalr;
 wire [3:0] ALUOp ;
 wire [1:0] storeSize ;
 wire [2:0]readSize;
-cu CUU (inst[`IR_opcode], inst[`IR_funct3] , inst[`IR_funct7], branch, pcSel,memRead,writeBackVal,memWrite,alusrc1sel, alusrc2sel,regWrite,ALUOp, readSize,storeSize,jStart,jump,jal_jalr);
+wire RI;
+
+cu CUU (inst[`IR_opcode], inst[`IR_funct3] , inst[`IR_funct7], inst[20], branch, pcSel,memRead,writeBackVal,memWrite,alusrc1sel, alusrc2sel,regWrite,ALUOp, readSize,storeSize,jStart,jump,jal_jalr,RI);
 
 
 // imm gen
@@ -68,9 +70,11 @@ nmux AluMux2(R2, IMM, alusrc2sel, alusrc2val);
 
 
 // alu
+wire [4:0]shamount ;
+nmux #(5)mm (alusrc2val[4:0],inst[`IR_shamt] ,RI,shamount) ;
 wire [31:0] AluOut;
 wire cf, zf, vf, sf; 
-prv32_ALU ALU(alusrc1val,alusrc2val,inst[`IR_shamt],ALUOp,cf,zf,vf,sf,AluOut);
+prv32_ALU ALU(alusrc1val,alusrc2val, shamount,ALUOp,cf,zf,vf,sf,AluOut);
 wire branchSignal; 
 BranchUnit Branchunit (branch, zf,cf,vf,sf, branchSignal);
 

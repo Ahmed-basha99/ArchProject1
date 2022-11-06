@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="110290000fs"></ZoomStartTime>
-      <ZoomEndTime time="179290001fs"></ZoomEndTime>
-      <Cursor1Time time="164490000fs"></Cursor1Time>
+      <ZoomStartTime time="551350000fs"></ZoomStartTime>
+      <ZoomEndTime time="998350001fs"></ZoomEndTime>
+      <Cursor1Time time="736850000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="133"></NameColumnWidth>
-      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+      <NameColumnWidth column_width="130"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="52" />
+   <WVObjectSize size="72" />
    <wvobject fp_name="/sim/proc/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -55,6 +55,7 @@
    <wvobject fp_name="/sim/proc/inst" type="array">
       <obj_property name="ElementShortName">inst[31:0]</obj_property>
       <obj_property name="ObjectShortName">inst[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/branch" type="array">
       <obj_property name="ElementShortName">branch[2:0]</obj_property>
@@ -99,6 +100,10 @@
    <wvobject fp_name="/sim/proc/ALUOp" type="array">
       <obj_property name="ElementShortName">ALUOp[3:0]</obj_property>
       <obj_property name="ObjectShortName">ALUOp[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/curr_pc" type="array">
+      <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/storeSize" type="array">
       <obj_property name="ElementShortName">storeSize[1:0]</obj_property>
@@ -181,8 +186,8 @@
       <obj_property name="ObjectShortName">MemWrite</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/DM/addr" type="array">
-      <obj_property name="ElementShortName">addr[5:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[5:0]</obj_property>
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/DM/data_in" type="array">
       <obj_property name="ElementShortName">data_in[31:0]</obj_property>
@@ -214,8 +219,8 @@
       <obj_property name="ObjectShortName">MemWrite</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/DM/addr" type="array">
-      <obj_property name="ElementShortName">addr[5:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[5:0]</obj_property>
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/DM/data_in" type="array">
       <obj_property name="ElementShortName">data_in[31:0]</obj_property>
@@ -226,7 +231,84 @@
       <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/sim/proc/DM/mem" type="array">
-      <obj_property name="ElementShortName">mem[0:63][31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem[0:63][31:0]</obj_property>
+      <obj_property name="ElementShortName">mem[0:1023][31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem[0:1023][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[4:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/curr_pc" type="array">
+      <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/funct3" type="array">
+      <obj_property name="ElementShortName">funct3[2:0]</obj_property>
+      <obj_property name="ObjectShortName">funct3[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/funct7" type="array">
+      <obj_property name="ElementShortName">funct7[6:0]</obj_property>
+      <obj_property name="ObjectShortName">funct7[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/branch" type="array">
+      <obj_property name="ElementShortName">branch[2:0]</obj_property>
+      <obj_property name="ObjectShortName">branch[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/pcSel" type="logic">
+      <obj_property name="ElementShortName">pcSel</obj_property>
+      <obj_property name="ObjectShortName">pcSel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/memRead" type="logic">
+      <obj_property name="ElementShortName">memRead</obj_property>
+      <obj_property name="ObjectShortName">memRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/writeBackVal" type="array">
+      <obj_property name="ElementShortName">writeBackVal[1:0]</obj_property>
+      <obj_property name="ObjectShortName">writeBackVal[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/memWrite" type="logic">
+      <obj_property name="ElementShortName">memWrite</obj_property>
+      <obj_property name="ObjectShortName">memWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/alusrc1" type="logic">
+      <obj_property name="ElementShortName">alusrc1</obj_property>
+      <obj_property name="ObjectShortName">alusrc1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/alusrc2" type="logic">
+      <obj_property name="ElementShortName">alusrc2</obj_property>
+      <obj_property name="ObjectShortName">alusrc2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/regWrite" type="logic">
+      <obj_property name="ElementShortName">regWrite</obj_property>
+      <obj_property name="ObjectShortName">regWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/ALUOp" type="array">
+      <obj_property name="ElementShortName">ALUOp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUOp[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/readSize" type="array">
+      <obj_property name="ElementShortName">readSize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">readSize[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/storeSize" type="array">
+      <obj_property name="ElementShortName">storeSize[1:0]</obj_property>
+      <obj_property name="ObjectShortName">storeSize[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/jStart" type="logic">
+      <obj_property name="ElementShortName">jStart</obj_property>
+      <obj_property name="ObjectShortName">jStart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/jump" type="logic">
+      <obj_property name="ElementShortName">jump</obj_property>
+      <obj_property name="ObjectShortName">jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/jal_jalr" type="logic">
+      <obj_property name="ElementShortName">jal_jalr</obj_property>
+      <obj_property name="ObjectShortName">jal_jalr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sim/proc/CUU/RI" type="logic">
+      <obj_property name="ElementShortName">RI</obj_property>
+      <obj_property name="ObjectShortName">RI</obj_property>
    </wvobject>
 </wave_config>

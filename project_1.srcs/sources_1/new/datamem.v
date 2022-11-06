@@ -24,16 +24,15 @@ module datamem
  (input clk, input MemRead, input MemWrite,
  input [31:0] addr, input [31:0] data_in, output reg [31:0] data_out, input [2:0] readSize, input [1:0] storeSize);
  reg [31:0] mem [0:1023];
- always @ (posedge clk) begin
- data_out = MemRead? mem[addr]: 0;
+ always @ (negedge clk) begin
+// data_out = MemRead? mem[addr]: 0;
  if(MemRead) begin
     case(readSize)
-        `LOAD_b: data_out = {{24{mem[addr][8]}}, mem[addr][7:0]};
-        `LOAD_h: data_out = {{16{mem[addr][16]}}, mem[addr][15:0]};
+        `LOAD_b: data_out = {{24{mem[addr][7]}}, mem[addr][7:0]};
+        `LOAD_h: data_out = {{16{mem[addr][15]}}, mem[addr][15:0]};
         `LOAD_w: data_out = mem[addr];
         `LOAD_bu: data_out = {24'b0, mem[addr][7:0]};
         `LOAD_hu: data_out = {16'b0, mem[addr][15:0]};  
-        default: data_out = 0;
     endcase
  end
 
